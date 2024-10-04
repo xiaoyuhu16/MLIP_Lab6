@@ -16,18 +16,18 @@ pipeline {
                 echo 'Test Step: We run testing tool like pytest here'
 
                 # Create virtual environment if it doesn't exist
-                if [ ! -d "mlip_env" ]; then
-                    python3 -m venv mlip_env
-                fi
+                // if [ ! -d "mlip_env" ]; then
+                //     python3 -m venv mlip_env
+                // fi
 
-                # Activate the virtual environment
-                source mlip_env/bin/activate
+                // # Activate the virtual environment
+                // source mlip_env/bin/activate
 
-                # Upgrade pip within the venv
-                pip install --upgrade pip
+                // # Upgrade pip within the venv
+                // pip install --upgrade pip
 
-                # Install dependencies inside the virtual environment
-                pip install pandas pytest scikit-learn
+                // # Install dependencies inside the virtual environment
+                // pip install pandas pytest scikit-learn
 
                 # Run pytest
                 pytest
