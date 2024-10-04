@@ -15,20 +15,26 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
 
-                # TODO fill out the path to conda here
-                # sudo mlip_env/bin/activate
-                pip install pytest numpy pandas scikit-learn
+                # Create virtual environment if it doesn't exist
+                if [ ! -d "mlip_env" ]; then
+                    python3 -m venv mlip_env
+                fi
 
-                # TODO Complete the command to run pytest
-                # sudo /PATH/TO/CONDA run -n <Envinronment Name> <Command you want to run>
+                # Activate the virtual environment
+                source mlip_env/bin/activate
+
+                # Upgrade pip within the venv
+                pip install --upgrade pip
+
+                # Install dependencies inside the virtual environment
+                pip install pandas pytest scikit-learn
+
+                # Run pytest
                 pytest
 
-                # echo 'pytest not runned'
-                # exit 1 #comment this line after implementing Jenkinsfile
                 # Deactivate the virtual environment
                 deactivate
                 '''
-
             }
         }
         stage('Deploy') {
