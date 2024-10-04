@@ -15,9 +15,10 @@ pipeline {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
 
-               
+                # Activate the virtual environment
+                source mlip_env/bin/activate 
 
-                # Run pytest
+                # Run pytest in the virtual environment
                 pytest
 
                 # Deactivate the virtual environment
